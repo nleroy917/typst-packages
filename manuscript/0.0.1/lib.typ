@@ -57,6 +57,7 @@
 }
 
 #let authors(author_data) = {
+    set par(justify: false)
     let authorn = 1
     for author in author_data.authors {
         let author_string = box({
@@ -79,17 +80,16 @@
         authorn += 1
         author_string
     }
-    linebreak()
 }
 
 #let affiliations(author_data) = {
-    linebreak()
     for affil in author_data.affiliations.pairs() {
         let affiliation_string = box({
             set text(size: 8pt)
-            super([#affil.at(0)])
-            [#affil.at(1)]
+            super(affil.at(0))
+            affil.at(1)
         })
+        linebreak()
         affiliation_string
     }
 }
